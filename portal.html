@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portal de Clientes | Martinez & Asoc.</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/isotipo.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+body{min-height:100vh}
+.login{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.login .side{background:linear-gradient(rgba(8,86,94,.88),rgba(8,86,94,.92)),url('assets/hero.jpg') center/cover;color:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:8%}
+.login .side img{width:300px;margin-bottom:2rem}
+.login .box{display:flex;align-items:center;justify-content:center;padding:2rem}
+.login form{width:min(380px,100%)}
+.demo{font-size:.78rem;background:#fff;border:1px dashed var(--slate);border-radius:10px;padding:.8rem 1rem;margin-top:1.2rem;color:var(--muted)}
+.err{color:#b3261e;font-size:.85rem;min-height:1.2rem;margin:.4rem 0}
+.app{display:none;min-height:100vh;grid-template-columns:250px 1fr}
+.sb{background:var(--teal);color:var(--cream);padding:1.6rem 1.2rem;display:flex;flex-direction:column;gap:.3rem}
+#nav{display:flex;flex-direction:column;gap:.2rem}
+.sb img{width:170px;margin-bottom:1.6rem}
+.sb button{background:none;border:0;color:var(--cream);text-align:left;padding:.7rem .9rem;border-radius:10px;font-family:var(--sans);font-size:.9rem;cursor:pointer}
+.sb button.on,.sb button:hover{background:rgba(255,255,255,.12)}
+.sb .who{margin-top:auto;font-size:.8rem;opacity:.85;border-top:1px solid rgba(255,255,255,.2);padding-top:1rem}
+main.pane{padding:2rem 2.4rem;overflow:auto}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.6rem}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.6rem}
+.kpi{background:#fff;border-radius:12px;padding:1.1rem 1.3rem;box-shadow:var(--shadow);border-left:4px solid var(--green)}
+.kpi b{font-size:1.6rem;color:var(--teal);font-family:var(--serif);display:block}
+.kpi span{font-size:.8rem;color:var(--muted)}
+.drop{border:2px dashed var(--slate);border-radius:14px;padding:1.6rem;text-align:center;background:#fff;color:var(--muted);margin-bottom:1.4rem;transition:.2s}
+.drop.over{background:#eaf5ee;border-color:var(--green)}
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+.filters select,.filters input{padding:.55rem .8rem;font-size:.85rem}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);font-size:.86rem}
+th{background:var(--cream);color:var(--teal);text-align:left;padding:.8rem 1rem;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase}
+td{padding:.75rem 1rem;border-top:1px solid var(--line)}
+td .a{cursor:pointer;color:var(--teal);font-weight:600;margin-right:.8rem;background:none;border:0;font-family:var(--sans)}
+td .a.del{color:#b3261e}
+.empty{text-align:center;padding:2rem;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:99}
+.modal .in{background:var(--cream);padding:2rem;border-radius:14px;width:min(440px,92%)}
+.banner{background:#fff8e1;border:1px solid #f0d58a;color:#6b5400;font-size:.78rem;padding:.5rem 1rem;text-align:center}
+.loading{opacity:.6;pointer-events:none}
+.mode{display:inline-block;font-size:.7rem;padding:.15rem .6rem;border-radius:20px;background:var(--green);color:var(--teal);font-weight:700;margin-left:.5rem;vertical-align:middle}
+@media(max-width:860px){.login{grid-template-columns:1fr}.login .side{display:none}.app{grid-template-columns:1fr}.sb{flex-direction:row;flex-wrap:wrap;align-items:center}#nav{flex-direction:row;flex-wrap:wrap}.sb img{width:120px;margin:0 1rem 0 0}.sb .who{margin:0 0 0 auto;border:0;padding:0}.kpis{grid-template-columns:1fr}main.pane{padding:1.2rem}table{display:block;overflow-x:auto}}
+</style>
+<script src="config.js"></script>
+</head>
+<body>
+<div class="banner" id="demoBanner" style="display:none">Modo DEMO: los datos se guardan solo en este navegador. Para usarlo con clientes reales, completar config.js (ver LEEME).</div>
+
+<div class="login" id="vLogin">
+  <div class="side"><img src="assets/logo-principal-crema.png" alt="Martinez & Asoc.">
+    <h2 style="color:var(--cream)">Portal de Clientes</h2><p style="margin-top:1rem;max-width:420px">Subí tu documentación y descargá tus declaraciones juradas, VEP, recibos y balances, cuando quieras y desde donde estés.</p></div>
+  <div class="box"><form id="fLogin">
+    <a href="index.html" style="font-size:.85rem;color:var(--slate)">← Volver al sitio</a>
+    <h2 style="margin:1rem 0 1.4rem">Ingresar</h2>
+    <div class="f"><label id="luLabel">Usuario</label><input id="lu" required autocomplete="username"></div>
+    <div class="f"><label>Contraseña</label><input id="lp" type="password" required autocomplete="current-password"></div>
+    <div class="err" id="lerr"></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center">Ingresar</button>
+    <p style="font-size:.82rem;margin-top:1rem;color:var(--muted)"><a href="#" id="forgot" style="color:var(--teal);font-weight:600">¿Olvidaste tu contraseña?</a> · o escribinos por <a href="https://wa.me/5493815865561" target="_blank" style="color:var(--teal);font-weight:600">WhatsApp</a>.</p>
+    <div class="demo" id="demoBox" style="display:none"><b>Accesos de prueba</b><br>Cliente: <code>demo</code> / <code>Demo2026!</code><br>Estudio (admin): <code>estudio</code> / <code>Estudio2026!</code></div>
+  </form></div>
+</div>
+
+<div class="app" id="vApp">
+  <aside class="sb">
+    <img src="assets/logo-horizontal-crema.png" alt="Martinez & Asoc.">
+    <div id="nav"></div>
+    <div class="who"><span id="whoName"></span><br><button id="btnLogout" style="padding:.4rem 0">Cerrar sesión ↪</button></div>
+  </aside>
+  <main class="pane" id="pane"></main>
+</div>
+<div class="modal" id="modal"><div class="in" id="modalIn"></div></div>
+
+<script>
+const CATS=['Facturas y comprobantes','Declaraciones juradas','VEP / Pagos','Sueldos y cargas sociales','Balances y EECC','Documentación societaria','Otros'];
+const MAXMB=20;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=b=>b>1048576?(b/1048576).toFixed(1)+' MB':Math.max(1,Math.round((b||0)/1024))+' KB';
+const fdate=d=>new Date(d).toLocaleDateString('es-AR');
+const periodNow=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')};
+const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(b=>b.toString(16).padStart(2,'0')).join('');
+function modalMsg(t,h){$('modalIn').innerHTML=`<h3>${t}</h3><p style="margin:1rem 0;font-size:.9rem">${h}</p><button class="btn btn-primary" onclick="$('modal').style.display='none'">Cerrar</button>`;$('modal').style.display='flex'}
+const loadScript=src=>new Promise((ok,ko)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=ko;document.head.appendChild(s)});
+
+/* ===== MODO DEMO (navegador) ===== */
+function LocalAPI(){
+  let DB;
+  const P=r=>new Promise((ok,ko)=>{r.onsuccess=()=>ok(r.result);r.onerror=()=>ko(r.error)});
+  const st=(s,m='readonly')=>DB.transaction(s,m).objectStore(s);
+  const prof=u=>u&&({id:u.user,user:u.user,name:u.name,cuit:u.cuit,role:u.role});
+  const norm=f=>({id:f.id,owner:f.owner,name:f.name,cat:f.cat,period:f.period,byStudio:f.by==='estudio',size:f.size,date:f.date,seen:!!f.seen});
+  return {
+    mode:'demo',
+    async init(){
+      DB=await new Promise(r=>{const q=indexedDB.open('mya_portal',1);q.onupgradeneeded=e=>{const d=e.target.result;d.createObjectStore('users',{keyPath:'user'});d.createObjectStore('files',{keyPath:'id',autoIncrement:true})};q.onsuccess=e=>r(e.target.result)});
+      if(!(await P(st('users').getAll())).length){
+        await P(st('users','readwrite').put({user:'estudio',name:'Estudio Martinez & Asoc.',role:'admin',hash:await sha('Estudio2026!')}));
+        await P(st('users','readwrite').put({user:'demo',name:'Cliente Demo SRL',cuit:'30-00000000-0',role:'client',hash:await sha('Demo2026!')}));
+        const blob=new Blob(['Documento de ejemplo generado por el estudio.'],{type:'text/plain'});
+        await P(st('files','readwrite').put({owner:'demo',name:'DDJJ IVA - ejemplo.txt',cat:'Declaraciones juradas',period:periodNow(),by:'estudio',size:blob.size,date:Date.now(),blob}));
+      }},
+    async session(){const s=sessionStorage.getItem('mya_user');return s?prof(await P(st('users').get(s))):null},
+    async login(u,p){const r=await P(st('users').get(u.trim().toLowerCase()));if(!r||r.hash!==await sha(p))throw new Error('Usuario o contraseña incorrectos.');sessionStorage.setItem('mya_user',r.user);return prof(r)},
+    async logout(){sessionStorage.removeItem('mya_user')},
+    async forgot(){modalMsg('Recuperar contraseña','En modo demo no hay envío de correos. Pedile al estudio que te genere una nueva contraseña.')},
+    async listClients(){return (await P(st('users').getAll())).filter(u=>u.role==='client').map(prof)},
+    async listFiles(owner){return (await P(st('files').getAll())).filter(f=>!owner||f.owner===owner).map(norm).sort((a,b)=>b.date-a.date)},
+    async upload(owner,file,cat,period,byStudio){await P(st('files','readwrite').put({owner,name:file.name,cat,period,by:byStudio?'estudio':owner,size:file.size,date:Date.now(),blob:file,seen:byStudio}))},
+    async download(f){const r=await P(st('files').get(f.id));const a=document.createElement('a');a.href=URL.createObjectURL(r.blob);a.download=r.name;a.click()},
+    async remove(f){await P(st('files','readwrite').delete(f.id))},
+    async markSeen(ids){for(const id of ids){const r=await P(st('files').get(id));r.seen=true;await P(st('files','readwrite').put(r))}},
+    async createClient({name,cuit,email,pass}){const u=email.trim().toLowerCase();if(await P(st('users').get(u)))throw new Error('Ese usuario ya existe.');await P(st('users','readwrite').put({user:u,name,cuit,role:'client',hash:await sha(pass)}));return u},
+    async changePassword(me,oldP,newP){const r=await P(st('users').get(me.id));if(r.hash!==await sha(oldP))throw new Error('La contraseña actual no coincide.');r.hash=await sha(newP);await P(st('users','readwrite').put(r))}
+  }}
+
+/* ===== MODO REAL (Supabase) ===== */
+function SupaAPI(cfg){
+  let sb,sbAux;const BUCKET='documentos';
+  const norm=f=>({id:f.id,owner:f.owner,name:f.name,cat:f.cat,period:f.period,byStudio:f.by_studio,size:f.size,date:f.created_at,seen:f.seen,path:f.path});
+  const chk=({data,error})=>{if(error)throw new Error(error.message);return data};
+  const profile=async uid=>{const p=chk(await sb.from('profiles').select('*').eq('id',uid).single());return {id:p.id,user:p.email,name:p.name||p.email,cuit:p.cuit,role:p.role}};
+  return {
+    mode:'real',
+    async init(){
+      await loadScript('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');
+      sb=window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY);
+      sb.auth.onAuthStateChange(ev=>{if(ev==='PASSWORD_RECOVERY')window.__recovery=true});
+      sbAux=window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY,{auth:{persistSession:false,autoRefreshToken:false,storageKey:'mya-aux'}});
+    },
+    async session(){const {data}=await sb.auth.getSession();return data.session?profile(data.session.user.id):null},
+    async login(u,p){const {data,error}=await sb.auth.signInWithPassword({email:u.trim(),password:p});if(error)throw new Error('Usuario o contraseña incorrectos.');return profile(data.user.id)},
+    async logout(){await sb.auth.signOut()},
+    async forgot(email){
+      if(!email){modalMsg('Recuperar contraseña','Escribí tu e-mail en el campo de usuario y volvé a tocar “¿Olvidaste tu contraseña?”.');return}
+      const {error}=await sb.auth.resetPasswordForEmail(email.trim(),{redirectTo:location.href.split('#')[0]});
+      modalMsg('Recuperar contraseña',error?esc(error.message):'Si el e-mail está registrado, vas a recibir un enlace para crear una nueva contraseña.')},
+    async listClients(){return chk(await sb.from('profiles').select('*').eq('role','client').order('name')).map(p=>({id:p.id,user:p.email,name:p.name||p.email,cuit:p.cuit,role:p.role}))},
+    async listFiles(owner){let q=sb.from('documents').select('*').order('created_at',{ascending:false});if(owner)q=q.eq('owner',owner);return chk(await q).map(norm)},
+    async upload(owner,file,cat,period,byStudio){
+      const safe=file.name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\w.\-]+/g,'_');
+      const path=`${owner}/${Date.now()}_${safe}`;
+      chk(await sb.storage.from(BUCKET).upload(path,file,{contentType:file.type||'application/octet-stream'}));
+      const r=await sb.from('documents').insert({owner,name:file.name,cat,period,by_studio:byStudio,size:file.size,path,seen:byStudio});
+      if(r.error){await sb.storage.from(BUCKET).remove([path]);throw new Error(r.error.message)}},
+    async download(f){const d=chk(await sb.storage.from(BUCKET).createSignedUrl(f.path,60,{download:f.name}));const a=document.createElement('a');a.href=d.signedUrl;a.click()},
+    async remove(f){chk(await sb.storage.from(BUCKET).remove([f.path]));chk(await sb.from('documents').delete().eq('id',f.id))},
+    async markSeen(ids){if(ids.length)chk(await sb.from('documents').update({seen:true}).in('id',ids))},
+    async createClient({name,cuit,email,pass}){
+      const {data,error}=await sbAux.auth.signUp({email:email.trim(),password:pass,options:{data:{name,cuit}}});
+      if(error)throw new Error(error.message);
+      if(data.user&&data.user.identities&&!data.user.identities.length)throw new Error('Ese e-mail ya está registrado.');
+      return email.trim()},
+    async changePassword(me,oldP,newP){
+      if(!window.__recovery){const {error:e1}=await sb.auth.signInWithPassword({email:me.user,password:oldP});if(e1)throw new Error('La contraseña actual no coincide.')}
+      const {error}=await sb.auth.updateUser({password:newP});if(error)throw new Error(error.message)}
+  }}
+
+/* ===== Interfaz ===== */
+const CFG=window.PORTAL_CONFIG||{};
+const API=(CFG.SUPABASE_URL&&CFG.SUPABASE_ANON_KEY)?SupaAPI(CFG):LocalAPI();
+let ME=null,VIEW='docs',SEL=null,FC='',FP='';
+async function guard(fn){document.body.classList.add('loading');try{await fn()}catch(e){modalMsg('Ups',esc(e.message||e))}finally{document.body.classList.remove('loading')}}
+
+$('fLogin').onsubmit=e=>{e.preventDefault();$('lerr').textContent='';
+  guard(async()=>{try{ME=await API.login($('lu').value,$('lp').value);start()}catch(err){$('lerr').textContent=err.message}})};
+$('forgot').onclick=e=>{e.preventDefault();API.forgot($('lu').value)};
+$('btnLogout').onclick=()=>guard(async()=>{await API.logout();location.reload()});
+
+function start(){$('vLogin').style.display='none';$('vApp').style.display='grid';$('whoName').textContent=ME.name;
+  const items=ME.role==='admin'?[['clients','👥 Clientes'],['docs','📁 Documentos'],['new','➕ Nuevo cliente'],['pwd','🔑 Contraseña']]:[['docs','📁 Mis documentos'],['pwd','🔑 Cambiar contraseña']];
+  VIEW=window.__recovery?'pwd':(ME.role==='admin'?'clients':'docs');
+  $('nav').innerHTML=items.map(i=>`<button data-v="${i[0]}">${i[1]}</button>`).join('');
+  $('nav').querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.v));render()}
+function go(v){VIEW=v;render()}
+function render(){document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===VIEW));
+  guard(async()=>{if(VIEW==='clients')return rClients();if(VIEW==='new')return rNew();if(VIEW==='pwd')return rPwd();return rDocs()})}
+
+async function rClients(){
+  const us=await API.listClients(),fs=await API.listFiles();
+  $('pane').innerHTML=`<div class="top"><div><span class="eyebrow">Panel del estudio</span><h2>Clientes${API.mode==='demo'?'<span class="mode">DEMO</span>':''}</h2></div><button class="btn btn-primary" id="bNew">+ Nuevo cliente</button></div>
+  <div class="kpis"><div class="kpi"><b>${us.length}</b><span>Clientes activos</span></div><div class="kpi"><b>${fs.length}</b><span>Documentos totales</span></div><div class="kpi"><b>${fs.filter(f=>!f.byStudio&&!f.seen).length}</b><span>Subidos por clientes sin revisar</span></div></div>
+  <input id="q" placeholder="Buscar cliente…" style="margin-bottom:1rem;width:min(360px,100%)">
+  <table id="tc"><tr><th>Cliente</th><th>Usuario</th><th>CUIT</th><th>Documentos</th><th>Sin revisar</th><th></th></tr>
+  ${us.map(u=>{const m=fs.filter(f=>f.owner===u.id);return `<tr data-s="${esc((u.name+' '+u.user+' '+(u.cuit||'')).toLowerCase())}"><td><b>${esc(u.name)}</b></td><td>${esc(u.user)}</td><td>${esc(u.cuit||'-')}</td><td>${m.length}</td><td>${m.filter(f=>!f.byStudio&&!f.seen).length}</td><td><button class="a" data-id="${esc(u.id)}">Ver carpeta →</button></td></tr>`}).join('')||'<tr><td colspan=6 class=empty>Todavía no hay clientes. Creá el primero con “+ Nuevo cliente”.</td></tr>'}</table>`;
+  $('bNew').onclick=()=>go('new');
+  $('q').oninput=e=>document.querySelectorAll('#tc tr[data-s]').forEach(r=>r.style.display=r.dataset.s.includes(e.target.value.toLowerCase())?'':'none');
+  document.querySelectorAll('#tc button[data-id]').forEach(b=>b.onclick=()=>{SEL=b.dataset.id;go('docs')})}
+
+async function rDocs(){
+  const isA=ME.role==='admin';let us=[];
+  if(isA){us=await API.listClients();if(!SEL||!us.some(u=>u.id===SEL))SEL=us[0]?.id;
+    if(!SEL){$('pane').innerHTML='<h2>Documentos</h2><p class="empty">Todavía no hay clientes.</p>';return}}
+  const owner=isA?SEL:ME.id;
+  const fs=await API.listFiles(owner);
+  if(isA){const ids=fs.filter(f=>!f.byStudio&&!f.seen).map(f=>f.id);if(ids.length)await API.markSeen(ids)}
+  const view=fs.filter(f=>(!FC||f.cat===FC)&&(!FP||f.period===FP));
+  const periods=[...new Set(fs.map(f=>f.period))].sort().reverse();
+  $('pane').innerHTML=`<div class="top"><div><span class="eyebrow">${isA?'Carpeta del cliente':'Mi carpeta'}</span><h2>${isA?'Documentos':'Mis documentos'}</h2></div>
+   ${isA?`<select id="selC">${us.map(u=>`<option value="${esc(u.id)}" ${u.id===SEL?'selected':''}>${esc(u.name)}</option>`).join('')}</select>`:''}</div>
+  <div class="kpis"><div class="kpi"><b>${fs.filter(f=>f.byStudio).length}</b><span>Del estudio para descargar</span></div><div class="kpi"><b>${fs.filter(f=>!f.byStudio).length}</b><span>${isA?'Subidos por el cliente':'Subidos por mí'}</span></div><div class="kpi"><b>${fs[0]?fdate(fs[0].date):'-'}</b><span>Último movimiento</span></div></div>
+  <div class="drop" id="drop">
+    <b style="color:var(--teal)">${isA?'Subí documentación para este cliente':'Arrastrá tus archivos acá'}</b> o <label style="color:var(--teal);font-weight:600;cursor:pointer;text-decoration:underline">elegilos<input type="file" id="fi" multiple hidden></label>
+    <div class="filters" style="justify-content:center;margin:1rem 0 0"><select id="uc">${CATS.map(c=>`<option>${c}</option>`).join('')}</select><input type="month" id="up" value="${periodNow()}"></div>
+    <small>PDF, imágenes, Excel o ZIP · máx. ${MAXMB} MB por archivo</small></div>
+  <div class="filters"><select id="fC"><option value="">Todas las categorías</option>${CATS.map(c=>`<option ${c===FC?'selected':''}>${c}</option>`).join('')}</select>
+   <select id="fP"><option value="">Todos los períodos</option>${periods.map(p=>`<option ${p===FP?'selected':''}>${esc(p)}</option>`).join('')}</select></div>
+  <table id="tf"><tr><th>Archivo</th><th>Categoría</th><th>Período</th><th>Origen</th><th>Fecha</th><th>Tamaño</th><th></th></tr>
+  ${view.map((f,i)=>`<tr><td>📄 ${esc(f.name)}</td><td>${esc(f.cat)}</td><td>${esc(f.period)}</td><td><span class="tag ${f.byStudio?'':'s'}">${f.byStudio?'Del estudio':'Del cliente'}</span></td><td>${fdate(f.date)}</td><td>${fmt(f.size)}</td>
+   <td><button class="a" data-dl="${i}">Descargar</button>${(isA||!f.byStudio)?`<button class="a del" data-rm="${i}">Eliminar</button>`:''}</td></tr>`).join('')||'<tr><td colspan=7 class=empty>No hay documentos para este filtro.</td></tr>'}</table>`;
+  if(isA)$('selC').onchange=e=>{SEL=e.target.value;render()};
+  $('fC').onchange=e=>{FC=e.target.value;render()};$('fP').onchange=e=>{FP=e.target.value;render()};
+  document.querySelectorAll('[data-dl]').forEach(b=>b.onclick=()=>guard(()=>API.download(view[b.dataset.dl])));
+  document.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{if(confirm('¿Eliminar el archivo?'))guard(async()=>{await API.remove(view[b.dataset.rm]);render()})});
+  const d=$('drop');
+  ['dragover','dragenter'].forEach(ev=>d.addEventListener(ev,e=>{e.preventDefault();d.classList.add('over')}));
+  ['dragleave','drop'].forEach(ev=>d.addEventListener(ev,e=>{e.preventDefault();d.classList.remove('over')}));
+  const doUp=files=>guard(async()=>{let n=0;for(const f of files){if(f.size>MAXMB*1048576){alert(f.name+' supera '+MAXMB+' MB');continue}
+      await API.upload(owner,f,$('uc').value,$('up').value||periodNow(),isA);n++}
+    render();if(n)setTimeout(()=>modalMsg('Listo ✔',`Se ${n>1?'subieron':'subió'} ${n} archivo${n>1?'s':''}.`),300)});
+  d.addEventListener('drop',e=>doUp(e.dataTransfer.files));$('fi').onchange=e=>doUp(e.target.files)}
+
+function rNew(){
+  $('pane').innerHTML=`<div class="top"><div><span class="eyebrow">Alta</span><h2>Nuevo cliente</h2></div></div>
+  <form id="fNew" style="max-width:480px;background:#fff;padding:2rem;border-radius:14px;box-shadow:var(--shadow)">
+  <div class="f"><label>Razón social / Nombre</label><input id="nn" required></div>
+  <div class="f"><label>CUIT</label><input id="nc" placeholder="20-12345678-9"></div>
+  <div class="f"><label>${API.mode==='real'?'E-mail del cliente (será su usuario)':'Usuario (CUIT sin guiones o e-mail)'}</label><input id="nu" required ${API.mode==='real'?'type="email"':''}></div>
+  <div class="f"><label>Contraseña inicial (mín. 8)</label><input id="np" required minlength="8"></div>
+  <div class="err" id="nerr"></div><button class="btn btn-primary">Crear acceso</button></form>`;
+  $('fNew').onsubmit=e=>{e.preventDefault();$('nerr').textContent='';
+    guard(async()=>{try{const pass=$('np').value;const u=await API.createClient({name:$('nn').value,cuit:$('nc').value,email:$('nu').value,pass});
+      const url=location.href.split('#')[0];
+      const msg=`Hola! Ya tenés acceso al Portal de Clientes de Martinez & Asoc.\n\nIngresá en: ${url}\nUsuario: ${u}\nContraseña: ${pass}\n\nTe recomendamos cambiar la contraseña en tu primer ingreso.`;
+      VIEW='clients';render();
+      setTimeout(()=>modalMsg('Acceso creado ✔',`<b>Portal:</b> ${esc(url)}<br><b>Usuario:</b> ${esc(u)}<br><b>Contraseña:</b> ${esc(pass)}<br><br><a class="btn btn-wa" target="_blank" href="https://wa.me/?text=${encodeURIComponent(msg)}">Enviar por WhatsApp</a>`),300)
+    }catch(err){$('nerr').textContent=err.message}})}}
+
+function rPwd(){
+  $('pane').innerHTML=`<div class="top"><h2>Cambiar contraseña</h2></div>
+  <form id="fPwd" style="max-width:420px;background:#fff;padding:2rem;border-radius:14px;box-shadow:var(--shadow)">
+  ${window.__recovery?'<p style="font-size:.9rem;margin-bottom:1rem">Creá tu nueva contraseña.</p><input type="hidden" id="p0" value="">':'<div class="f"><label>Contraseña actual</label><input type="password" id="p0" required></div>'}
+  <div class="f"><label>Nueva contraseña (mín. 8)</label><input type="password" id="p1" minlength="8" required></div>
+  <div class="f"><label>Repetir</label><input type="password" id="p2" required></div><div class="err" id="perr"></div>
+  <button class="btn btn-primary">Guardar</button></form>`;
+  $('fPwd').onsubmit=e=>{e.preventDefault();$('perr').textContent='';
+    if($('p1').value!==$('p2').value){$('perr').textContent='Las contraseñas no coinciden.';return}
+    guard(async()=>{try{await API.changePassword(ME,$('p0').value,$('p1').value);window.__recovery=false;modalMsg('Listo ✔','Tu contraseña fue actualizada.')}catch(err){$('perr').textContent=err.message}})}}
+
+(async()=>{
+  $('luLabel').textContent=API.mode==='real'?'E-mail':'Usuario';
+  if(API.mode==='demo'){$('demoBanner').style.display='block';$('demoBox').style.display='block'}
+  try{await API.init();ME=await API.session();if(ME)start()}
+  catch(e){$('lerr').textContent='No se pudo conectar con el servidor. Revisá config.js o tu conexión.';console.error(e)}
+})();
+</script>
+</body></html>

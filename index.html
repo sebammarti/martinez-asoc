@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Martinez & Asoc. | Asesores de Negocio · Tucumán</title>
+<meta name="description" content="Estudio de Ciencias Económicas en San Miguel de Tucumán. Impuestos, contabilidad, sueldos, RR.HH. y consultoría, con una red de abogados, escribanos y psicólogos.">
+<link rel="icon" href="assets/isotipo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#08565E;--teal-d:#063f45;--green:#81BD96;--slate:#7794A2;--cream:#F4F3EB;--ink:#16252a;--muted:#5d6b70;--line:#e2e0d5;
+--serif:'Playfair Display',Georgia,serif;--sans:'Montserrat',Arial,sans-serif;--r:24px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}
+.wrap{width:min(1240px,92%);margin:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.05;color:var(--teal)}
+em{font-style:italic;color:var(--green)}
+.tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--slate)}
+.tag:before{content:'';width:28px;height:2px;background:var(--green)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.7rem;border-radius:60px;font-weight:700;font-size:.9rem;transition:.25s;border:2px solid transparent;cursor:pointer;font-family:var(--sans)}
+.btn-t{background:var(--teal);color:var(--cream)}.btn-t:hover{background:var(--ink);transform:translateY(-2px)}
+.btn-g{background:var(--green);color:var(--teal-d)}.btn-g:hover{background:var(--cream);transform:translateY(-2px)}
+.btn-o{border-color:currentColor}.btn-o:hover{background:var(--teal);color:var(--cream);border-color:var(--teal)}
+.arrow{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.18);transition:.25s}
+.btn:hover .arrow{transform:rotate(-45deg)}
+header{position:fixed;top:14px;left:0;right:0;z-index:50}
+header .bar{width:min(1240px,94%);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:.6rem .7rem .6rem 1.4rem;background:rgba(244,243,235,.82);backdrop-filter:blur(14px);border:1px solid rgba(8,86,94,.1);border-radius:60px;box-shadow:0 10px 30px rgba(8,86,94,.08)}
+header img{height:38px}
+nav{display:flex;gap:1.7rem;align-items:center;font-size:.86rem;font-weight:600}
+nav a:not(.btn):hover{color:var(--green)}
+.mb{display:none;background:none;border:0;font-size:1.5rem;color:var(--teal);cursor:pointer;padding:0 .6rem}
+.hero{padding:150px 0 70px;position:relative}
+.hero .g{display:grid;grid-template-columns:1.05fr 1fr;gap:3.5rem;align-items:center}
+.hero h1{font-size:clamp(2.8rem,6.4vw,5.6rem);letter-spacing:-.02em;margin:1.2rem 0 1.4rem}
+.hero p.lead{font-size:1.12rem;color:var(--muted);max-width:520px}
+.hero .cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.2rem}
+.chips{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:2.4rem}
+.chips span{font-size:.78rem;font-weight:600;padding:.45rem 1rem;border-radius:30px;border:1px solid rgba(8,86,94,.2);color:var(--teal)}
+.collage{position:relative;height:600px}
+.collage .a{position:absolute;inset:0 0 90px 70px;border-radius:var(--r);overflow:hidden}
+.collage .b{position:absolute;left:0;bottom:0;width:52%;height:260px;border-radius:var(--r);overflow:hidden;border:8px solid var(--cream)}
+.collage img{width:100%;height:100%;object-fit:cover}
+.collage .badge{position:absolute;right:-10px;bottom:40px;background:var(--teal);color:var(--cream);border-radius:20px;padding:1.1rem 1.3rem;display:flex;gap:.9rem;align-items:center;box-shadow:0 20px 40px rgba(8,86,94,.3);max-width:280px;font-size:.85rem}
+.collage .badge img{width:46px;height:46px;object-fit:contain}
+.spin{position:absolute;top:-30px;left:20px;width:130px;height:130px;animation:sp 18s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.mq{background:var(--teal);color:var(--cream);overflow:hidden;padding:1.3rem 0;transform:rotate(-1.5deg);margin:40px -20px}
+.mq .t{display:flex;gap:3rem;white-space:nowrap;animation:mq 30s linear infinite;font-family:var(--serif);font-size:1.9rem;font-style:italic}
+.mq .t span:nth-child(even){color:var(--green);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:110px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:3.5rem;flex-wrap:wrap}
+.head h2{font-size:clamp(2.2rem,4.4vw,3.8rem);max-width:760px;margin-top:1rem;letter-spacing:-.01em}
+.head p{max-width:380px;color:var(--muted)}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:250px;gap:1.2rem}
+.tile{border-radius:var(--r);padding:2rem;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;transition:.35s}
+.tile:hover{transform:translateY(-6px)}
+.tile h3{font-size:1.9rem;margin-bottom:.6rem}
+.tile ul{list-style:none;font-size:.88rem}.tile li{padding:.18rem 0}.tile li:before{content:'→ ';color:var(--green);font-weight:700}
+.tile .n{position:absolute;top:1.4rem;right:1.6rem;font-family:var(--serif);font-size:1rem;opacity:.6}
+.t1{grid-column:span 2;grid-row:span 2;color:var(--cream);background:linear-gradient(180deg,rgba(6,63,69,.1),rgba(6,63,69,.95)),url('assets/img/equipo.jpg') center/cover}
+.t1 h3{color:var(--cream);font-size:2.6rem}
+.t2{background:#fff}.t3{background:var(--green);color:var(--teal-d)}.t3 h3{color:var(--teal-d)}.t3 li:before{color:var(--teal)}
+.t4{grid-column:span 2;color:var(--cream);background:linear-gradient(90deg,rgba(6,63,69,.95) 40%,rgba(6,63,69,.2)),url('assets/img/emprendedora.jpg') center/cover}.t4 h3{color:var(--cream)}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(8,86,94,.2)}
+.seg div{padding:2rem 1.6rem 2rem 0;border-right:1px solid rgba(8,86,94,.12);margin-right:1.6rem}
+.seg div:last-child{border:0}
+.seg b{display:block;font-family:var(--serif);font-size:1.4rem;color:var(--teal);margin-bottom:.5rem}
+.seg span{font-size:.9rem;color:var(--muted)}
+.dark{background:var(--teal-d);color:var(--cream)}
+.dark h2,.dark h3{color:var(--cream)}.dark .tag{color:var(--green)}.dark .head p{color:rgba(244,243,235,.75)}
+.team{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.mem{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background:#ddd}
+.mem img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:.6s;filter:saturate(.9)}
+.mem:hover img{transform:scale(1.06)}
+.mem .info{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(244,243,235,.95);backdrop-filter:blur(8px);border-radius:16px;padding:1rem 1.1rem;color:var(--ink)}
+.mem h3{font-size:1.25rem;color:var(--teal)}
+.mem small{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:700;margin-top:.2rem}
+.mem p{font-size:.82rem;color:var(--muted);margin-top:.4rem;max-height:0;overflow:hidden;transition:.4s}
+.mem:hover p{max-height:90px}
+.vals{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:3rem}
+.vals span{padding:.6rem 1.3rem;border-radius:40px;border:1px solid rgba(244,243,235,.3);font-size:.85rem;font-weight:600}
+.vals span:hover{background:var(--green);color:var(--teal-d);border-color:var(--green)}
+.net{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:center}
+.net .ph{border-radius:var(--r);overflow:hidden;height:560px;position:relative}
+.net .ph img{width:100%;height:100%;object-fit:cover}
+.net .ph .lbl{position:absolute;top:20px;left:20px;background:var(--green);color:var(--teal-d);font-weight:700;padding:.5rem 1rem;border-radius:30px;font-size:.8rem}
+.pros{display:grid;gap:1rem;margin-top:2rem}
+.pro{display:flex;gap:1.2rem;align-items:flex-start;padding:1.4rem;border-radius:20px;background:#fff;transition:.3s;border:1px solid transparent}
+.pro:hover{border-color:var(--green);transform:translateX(8px)}
+.pro .ic{flex:0 0 54px;height:54px;border-radius:16px;background:var(--teal);display:grid;place-items:center}
+.pro .ic svg{width:26px;height:26px;stroke:var(--cream);fill:none;stroke-width:1.7}
+.pro h3{font-size:1.3rem}.pro p{font-size:.9rem;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;counter-reset:s}
+.st{padding:2rem;border-radius:var(--r);background:#fff;position:relative;min-height:230px}
+.st:before{counter-increment:s;content:'0' counter(s);font-family:var(--serif);font-size:3.4rem;color:var(--green);line-height:1;display:block;margin-bottom:1.2rem}
+.st h3{font-size:1.35rem;margin-bottom:.4rem}.st p{font-size:.9rem;color:var(--muted)}
+.portal{display:grid;grid-template-columns:1fr 1fr;border-radius:32px;overflow:hidden;background:var(--teal)}
+.portal .tx{padding:4rem;color:var(--cream)}
+.portal h2{color:var(--cream);font-size:clamp(2rem,3.6vw,3.2rem);margin:1rem 0 1.5rem}
+.portal .tag{color:var(--green)}
+.portal li{list-style:none;padding:.55rem 0;border-bottom:1px solid rgba(244,243,235,.15);display:flex;gap:.8rem}
+.portal li b{color:var(--green)}
+.portal .im{background:url('assets/img/portal.jpg') center/cover;min-height:480px}
+.cta-big{position:relative;border-radius:32px;overflow:hidden;padding:6rem 4rem;color:var(--cream);background:linear-gradient(90deg,rgba(6,63,69,.95) 35%,rgba(6,63,69,.35)),url('assets/img/acuerdo.jpg') center/cover}
+.cta-big h2{color:var(--cream);font-size:clamp(2.3rem,5vw,4.4rem);max-width:720px;margin:1rem 0 2rem}
+.cta-big .tag{color:var(--green)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+details{border-bottom:1px solid rgba(8,86,94,.18);padding:1.3rem 0}
+summary{font-family:var(--serif);font-size:1.25rem;color:var(--teal);cursor:pointer;list-style:none;display:flex;justify-content:space-between}
+summary:after{content:'+';color:var(--green);font-size:1.6rem;line-height:1;transition:.3s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{margin-top:.7rem;color:var(--muted);font-size:.95rem}
+form{background:#fff;border-radius:var(--r);padding:2.4rem}
+.f{display:flex;flex-direction:column;margin-bottom:1rem}
+label{font-size:.75rem;font-weight:700;color:var(--teal);margin-bottom:.35rem;letter-spacing:.05em;text-transform:uppercase}
+input,select,textarea{font-family:var(--sans);font-size:.95rem;padding:.85rem 1rem;border:1px solid var(--line);border-radius:12px;background:var(--cream)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--green);border-color:transparent}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cinfo{display:grid;gap:1rem;margin-top:2rem}
+.cinfo div{display:flex;gap:1rem;align-items:center;font-weight:600}
+.cinfo i{font-style:normal;width:44px;height:44px;border-radius:50%;background:var(--teal);color:var(--cream);display:grid;place-items:center}
+footer{background:var(--teal-d);color:var(--cream);padding:4rem 0 2rem;margin-top:110px}
+footer .wrap{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+footer img{height:110px}footer a:hover{color:var(--green)}
+.big-word{font-family:var(--serif);font-size:clamp(3rem,12vw,11rem);line-height:.9;color:rgba(244,243,235,.07);text-align:center;margin-top:2rem;white-space:nowrap;overflow:hidden}
+.wa{position:fixed;right:22px;bottom:22px;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 25px rgba(0,0,0,.25);z-index:60}
+.wa:before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:pl 2s infinite}
+@keyframes pl{to{transform:scale(1.6);opacity:0}}
+.rv{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
+@media(max-width:980px){
+ .hero .g,.net,.portal,.two{grid-template-columns:1fr}.collage{height:460px}
+ .bento{grid-template-columns:1fr 1fr}.t1{grid-column:span 2}.t4{grid-column:span 2}
+ .team,.steps,.seg{grid-template-columns:1fr 1fr}.seg div{border:0}
+ nav{display:none;position:absolute;top:70px;left:3%;right:3%;flex-direction:column;background:var(--cream);padding:1.5rem;border-radius:24px;box-shadow:0 20px 40px rgba(0,0,0,.1)}
+ nav.open{display:flex}.mb{display:block}.portal .tx{padding:2.5rem}.cta-big{padding:4rem 2rem}.net .ph{height:380px}
+}
+@media(max-width:560px){.bento,.team,.steps,.seg,.r2{grid-template-columns:1fr}.t1,.t4{grid-column:span 1}.bento{grid-auto-rows:auto}.tile{min-height:240px}.collage .badge{display:none}section{padding:80px 0}}
+</style>
+</head>
+<body>
+
+<header><div class="bar">
+  <a href="#inicio"><img src="assets/logo-horizontal.png" alt="Martinez & Asoc."></a>
+  <button class="mb" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Menú">☰</button>
+  <nav onclick="if(event.target.tagName==='A')this.classList.remove('open')">
+    <a href="#servicios">Servicios</a><a href="#equipo">Equipo</a><a href="#red">Red de profesionales</a><a href="#contacto">Contacto</a>
+    <a href="portal.html" class="btn btn-t" style="padding:.7rem 1.3rem">🔒 Portal Clientes</a>
+  </nav>
+</div></header>
+
+<section class="hero" id="inicio"><div class="wrap g">
+  <div class="rv">
+    <span class="tag">Asesores de negocio · Tucumán</span>
+    <h1>Tus números en orden. <em>Tu negocio,</em> con rumbo.</h1>
+    <p class="lead">Impuestos, contabilidad, sueldos y consultoría en un mismo lugar, con una red de abogados, escribanos y psicólogos para acompañarte en cada decisión.</p>
+    <div class="cta">
+      <a class="btn btn-t" href="https://wa.me/5493815865561?text=Hola%20Martinez%20%26%20Asoc.%2C%20quiero%20hacer%20una%20consulta" target="_blank">Hablemos por WhatsApp <span class="arrow">→</span></a>
+      <a class="btn btn-o" href="#servicios" style="color:var(--teal)">Ver servicios</a>
+    </div>
+    <div class="chips"><span>Monotributistas</span><span>Profesionales</span><span>Pymes</span><span>Empresas</span></div>
+  </div>
+  <div class="collage rv">
+    <div class="a"><img src="assets/img/equipo.jpg" alt="Equipo de trabajo"></div>
+    <div class="b"><img src="assets/img/emprendedora.jpg" alt="Emprendedora revisando sus números"></div>
+    <svg class="spin" viewBox="0 0 100 100"><defs><path id="c" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+      <circle cx="50" cy="50" r="49" fill="#81BD96"/><text font-family="Montserrat" font-size="9.2" font-weight="700" letter-spacing="2.2" fill="#063f45"><textPath href="#c">ASESORES DE NEGOCIO · MARTINEZ & ASOC. ·</textPath></text></svg>
+    <div class="badge"><img src="assets/isotipo-crema.png" alt=""><div><b>Portal de Clientes</b><br>Tu documentación disponible las 24 horas</div></div>
+  </div>
+</div></section>
+
+<div class="mq"><div class="t">
+  <span>Impuestos</span><span>✦</span><span>Contabilidad</span><span>✦</span><span>Sueldos</span><span>✦</span><span>Consultoría</span><span>✦</span><span>Abogados</span><span>✦</span><span>Escribanos</span><span>✦</span><span>Psicólogos</span><span>✦</span>
+  <span>Impuestos</span><span>✦</span><span>Contabilidad</span><span>✦</span><span>Sueldos</span><span>✦</span><span>Consultoría</span><span>✦</span><span>Abogados</span><span>✦</span><span>Escribanos</span><span>✦</span><span>Psicólogos</span><span>✦</span>
+</div></div>
+
+<section id="servicios"><div class="wrap">
+  <div class="head rv"><div><span class="tag">Servicios</span><h2>Todo lo que tu negocio necesita, <em>en un solo lugar.</em></h2></div>
+  <p>Un esquema flexible que se ajusta a cada cliente, para que nuestro trabajo sea simple y eficiente.</p></div>
+  <div class="bento">
+    <div class="tile t1 rv"><span class="n">01</span><h3>Impuestos</h3><ul><li>IVA, Ingresos Brutos, Convenio Multilateral y Tributo Municipal</li><li>Ganancias, Bienes Personales y Responsable Sustituto</li><li>Regímenes de información</li><li>Planes de facilidades de pago (ARCA y Rentas)</li></ul></div>
+    <div class="tile t2 rv"><span class="n">02</span><h3>Contabilidad</h3><ul><li>Balances</li><li>Constitución de sociedades</li><li>Control de libros</li><li>Informes de gestión</li></ul></div>
+    <div class="tile t3 rv"><span class="n">03</span><h3>Laboral y RR.HH.</h3><ul><li>Liquidación de sueldos y jornales</li><li>Reclutamiento y selección</li><li>Organización del personal</li></ul></div>
+    <div class="tile t4 rv"><span class="n">04</span><h3>Consultoría</h3><ul><li>Rediseño e implementación de procesos</li><li>Auditoría interna</li><li>Análisis de costos y mejoras</li></ul></div>
+  </div>
+  <div class="seg rv" style="margin-top:4rem">
+    <div><b>Monotributistas</b><span>Alta, recategorización y control para emprender tranquilo.</span></div>
+    <div><b>Profesionales</b><span>Responsables inscriptos, Ganancias y Bienes Personales.</span></div>
+    <div><b>Pymes y familiares</b><span>Impuestos, sueldos y balances con un solo interlocutor.</span></div>
+    <div><b>Empresas</b><span>Auditoría, procesos, costos e informes de gestión.</span></div>
+  </div>
+</div></section>
+
+<section class="dark" id="equipo"><div class="wrap">
+  <div class="head rv"><div><span class="tag">Quiénes somos</span><h2>Somos un equipo que trabaja con vos para <em>alcanzar tus objetivos.</em></h2></div>
+  <p>Profesionales en Ciencias Económicas con experiencia en empresas públicas y privadas. Conocemos los desafíos de tu negocio desde adentro.</p></div>
+  <div class="team">
+    <div class="mem rv"><img src="assets/img/team-nicolas.jpg" alt="Nicolás Martínez"><div class="info"><h3>Nicolás Martínez</h3><small>Contador Público · M.P. 7480</small><p>Fundador. Experiencia en el área impositiva, auditoría interna y pericias contables.</p></div></div>
+    <div class="mem rv"><img src="assets/img/team-gustavo.jpg" alt="Gustavo Gabriel Recupero"><div class="info"><h3>Gustavo G. Recupero</h3><small>Contador Público</small><p>CPN del equipo de Martinez & Asoc.</p></div></div>
+    <div class="mem rv"><img src="assets/img/team-lucia.jpg" alt="María Lucía Dibi"><div class="info"><h3>María Lucía Dibi</h3><small>Contadora Pública</small><p>CPN del equipo de Martinez & Asoc.</p></div></div>
+    <div class="mem rv"><img src="assets/img/team-sebastian.jpg" alt="Sebastián Martínez"><div class="info"><h3>Sebastián Martínez</h3><small>Lic. en Administración · M.P. 422</small><p>Experiencia en RR.HH., liquidación de sueldos y diseño de procesos.</p></div></div>
+  </div>
+  <div class="vals rv"><span>Innovación</span><span>Integridad</span><span>Eficiencia</span><span>Pasión</span><span>Agilidad</span></div>
+</div></section>
+
+<section id="red"><div class="wrap net">
+  <div class="ph rv"><img src="assets/img/red.jpg" alt="Red de profesionales"><span class="lbl">Red de profesionales</span></div>
+  <div class="rv">
+    <span class="tag">Más que un estudio contable</span>
+    <h2 style="font-size:clamp(2.2rem,4vw,3.4rem);margin-top:1rem">Una red de especialistas <em>para cada necesidad.</em></h2>
+    <p style="color:var(--muted);margin-top:1rem">Trabajamos junto a profesionales de confianza para que resuelvas todo con un solo interlocutor.</p>
+    <div class="pros">
+      <div class="pro"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M4 7h16M7 7l-3 7a3 3 0 0 0 6 0zM17 7l-3 7a3 3 0 0 0 6 0z"/></svg></div><div><h3>Abogados</h3><p>Asesoramiento laboral, comercial y societario.</p></div></div>
+      <div class="pro"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg></div><div><h3>Escribanos</h3><p>Constitución de sociedades, poderes, certificaciones y escrituras.</p></div></div>
+      <div class="pro"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 9.3 6C19 16.6 12 21 12 21z"/></svg></div><div><h3>Psicólogos</h3><p>Evaluaciones psicotécnicas y acompañamiento en selección de personal.</p></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="head rv"><div><span class="tag">Cómo trabajamos</span><h2>Simple, claro <em>y sin vueltas.</em></h2></div></div>
+  <div class="steps">
+    <div class="st rv"><h3>Diagnóstico</h3><p>Una primera reunión para entender tu situación y tus objetivos.</p></div>
+    <div class="st rv"><h3>Propuesta</h3><p>Un esquema a medida, con alcance y honorarios claros.</p></div>
+    <div class="st rv"><h3>Gestión</h3><p>Nos ocupamos de vencimientos, presentaciones y liquidaciones.</p></div>
+    <div class="st rv"><h3>Seguimiento</h3><p>Portal online, reportes y contacto directo por WhatsApp.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="portal rv">
+  <div class="tx"><span class="tag">Portal de Clientes</span><h2>Tu documentación, <em>las 24 horas.</em></h2>
+    <ul><li><b>✓</b>Ingresá con tu usuario y contraseña personal.</li><li><b>✓</b>Subí facturas y comprobantes sin mails ni chats perdidos.</li><li><b>✓</b>Descargá DDJJ, VEP, recibos de sueldo y balances.</li><li><b>✓</b>Todo ordenado por categoría y período.</li></ul>
+    <a href="portal.html" class="btn btn-g" style="margin-top:2rem">Ingresar al portal <span class="arrow">→</span></a></div>
+  <div class="im" role="img" aria-label="Portal de clientes en el celular"></div>
+</div></div></section>
+
+<section id="contacto" style="padding-top:0"><div class="wrap">
+  <div class="cta-big rv"><span class="tag">Hablemos</span><h2>Tu próximo paso empieza con <em>una conversación.</em></h2>
+    <a class="btn btn-g" href="https://wa.me/5493815865561" target="_blank">Escribinos por WhatsApp <span class="arrow">→</span></a></div>
+  <div class="two" style="margin-top:90px">
+    <div class="rv"><span class="tag">Preguntas frecuentes</span><h2 style="font-size:2.6rem;margin:1rem 0 1.5rem">¿Tenés dudas?</h2>
+      <details><summary>¿Atienden solo en Tucumán?</summary><p>Nuestra oficina está en San Miguel de Tucumán, pero con el portal y las reuniones virtuales trabajamos con clientes de otras provincias.</p></details>
+      <details><summary>¿Cómo les envío mi documentación?</summary><p>Desde el Portal de Clientes, con tu usuario y contraseña. Los archivos quedan ordenados por categoría y período.</p></details>
+      <details><summary>¿Cuánto cuesta el servicio?</summary><p>Depende del alcance. Después de una reunión de diagnóstico te enviamos una propuesta con honorarios claros.</p></details>
+      <details><summary>¿También me ayudan con temas legales?</summary><p>Sí. A través de nuestra red de abogados, escribanos y psicólogos coordinamos lo que necesites.</p></details>
+      <div class="cinfo"><div><i>📍</i>San Luis 309 – San Miguel de Tucumán</div><div><i>💬</i>381-5865561 · ☎️ 381-2554453</div><div><i>✉️</i>cpnmartinez17@gmail.com</div></div>
+    </div>
+    <form class="rv" onsubmit="return enviar(event)">
+      <h3 style="font-size:1.8rem;margin-bottom:1.4rem">Dejanos tu consulta</h3>
+      <div class="r2"><div class="f"><label>Nombre</label><input id="cn" required></div><div class="f"><label>Teléfono</label><input id="ct"></div></div>
+      <div class="f"><label>Soy…</label><select id="cs"><option>Monotributista</option><option>Profesional / Resp. Inscripto</option><option>Pyme / Empresa familiar</option><option>Empresa</option><option>Estoy por emprender</option></select></div>
+      <div class="f"><label>¿Qué necesitás?</label><select id="cq"><option>Impuestos</option><option>Contabilidad</option><option>Sueldos / RR.HH.</option><option>Consultoría</option><option>Abogado / Escribano</option><option>Psicólogo / Psicotécnico</option><option>Otro</option></select></div>
+      <div class="f"><label>Contanos un poco más</label><textarea id="cm" rows="4" required></textarea></div>
+      <button class="btn btn-t" style="width:100%;justify-content:center">Enviar por WhatsApp <span class="arrow">→</span></button>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <img src="assets/logo-principal-crema.png" alt="Martinez & Asoc.">
+  <div style="font-size:.9rem;line-height:1.9">San Luis 309 · San Miguel de Tucumán<br><a href="portal.html">Portal Clientes</a> · <a href="#servicios">Servicios</a> · <a href="#contacto">Contacto</a><br><span style="opacity:.6">© 2026 Martinez & Asoc. · Asesores de Negocio</span></div>
+</div><div class="big-word">Martinez & Asoc.</div></footer>
+
+<a class="wa" href="https://wa.me/5493815865561" target="_blank" aria-label="WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.4.2.5.3.1.2.1.8-.2 1.4z"/></svg></a>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*90+'ms';io.observe(el)});
+function enviar(e){e.preventDefault();
+ const t=`Hola Martinez & Asoc., soy ${cn.value} (${cs.value}). Necesito: ${cq.value}. Tel: ${ct.value}. ${cm.value}`;
+ window.open('https://wa.me/5493815865561?text='+encodeURIComponent(t),'_blank');return false}
+</script>
+</body></html>
