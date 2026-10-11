@@ -7,6 +7,6 @@
 //  "anon public" (Project Settings > API). NUNCA la clave "service_role".
 // =====================================================================
 window.PORTAL_CONFIG = {
-  SUPABASE_URL: "",
-  SUPABASE_ANON_KEY: ""
+  SUPABASE_URL: "https://yqtscnbhrvuxgamvswia.supabase.co",
+  SUPABASE_ANON_KEY: "sb_publishable_OKPJsY41ojCqFeuUfu2D5A_gG_x15_8"
 };
